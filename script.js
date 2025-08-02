@@ -94,3 +94,45 @@ async function sendMessage() {
 
     document.getElementById('user-input').value = "";
 }
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = 'en-US';
+
+function startListening() {
+    recognition.start();
+}
+
+function stopListening() {
+    recognition.stop();
+}
+
+recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript;
+    document.getElementById('user-input').value = transcript;
+    sendMessage();
+};
+
+function speak(text) {
+    const synth = window.speechSynthesis;
+    const utterThis = new SpeechSynthesisUtterance(text);
+    synth.speak(utterThis);
+}
+
+// Update your sendMessage function to also speak reply
+function sendMessage() {
+    const input = document.getElementById('user-input').value;
+    const chatBox = document.getElementById('chat-box');
+
+    const userMsg = document.createElement('div');
+    userMsg.textContent = "You: " + input;
+    chatBox.appendChild(userMsg);
+
+    // Static AI Reply
+    const botReply = "This is CODE MUM's Voice Reply!";
+    const botMsg = document.createElement('div');
+    botMsg.textContent = "CODE MUM: " + botReply;
+    chatBox.appendChild(botMsg);
+
+    speak(botReply); // Speak the reply
+
+    document.getElementById('user-input').value = "";
+}
