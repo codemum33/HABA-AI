@@ -19,3 +19,17 @@ function sendMessage() {
 
     document.getElementById('user-input').value = '';
 }
+function sendMessage() {
+  const input = document.getElementById('user-input').value;
+  const chatBox = document.getElementById('chat-box');
+  
+  const userMsg = document.createElement('div');
+  userMsg.textContent = "You: " + input;
+  chatBox.appendChild(userMsg);
+  
+  const botMsg = document.createElement('div');
+  botMsg.textContent = "CODE MUM: " + "This is a static reply!";
+  chatBox.appendChild(botMsg);
+  
+  document.getElementById('user-input').value = '';
+}
