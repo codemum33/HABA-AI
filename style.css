@@ -1,19 +1,19 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
 
-#chatbox {
-    width: 80%;
-    height: 400px;
-    margin: 20px auto;
-    background: #fff;
-    border: 1px solid #ccc;
-    overflow-y: scroll;
-    padding: 10px;
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+    padding: 50px;
 }
-.user { text-align: right; color: blue; margin: 5px; }
-.bot { text-align: left; color: green; margin: 5px; }
+h1 {
+    color: #4CAF50;
+}
+.chat-box {
+    border: 2px solid #4CAF50;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: auto;
+}
