@@ -64,3 +64,33 @@ async function sendMessage() {
 
     document.getElementById('user-input').value = "";
 }
+async function sendMessage() {
+    const input = document.getElementById('user-input').value;
+    const chatBox = document.getElementById('chat-box');
+
+    const userMsg = document.createElement('div');
+    userMsg.textContent = "You: " + input;
+    chatBox.appendChild(userMsg);
+
+    // API Call to OpenAI
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer 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"
+        },
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: input }]
+        })
+    });
+
+    const data = await response.json();
+    const botReply = data.choices[0].message.content;
+
+    const botMsg = document.createElement('div');
+    botMsg.textContent = "CODE MUM: " + botReply;
+    chatBox.appendChild(botMsg);
+
+    document.getElementById('user-input').value = "";
+}
